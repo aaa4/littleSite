@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div data-th-fragment="header-css">
+        <!-- this is header-css-->
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css"
+              data-th-href="@{/bootstrap.min.css}" />
+
+        <link rel="stylesheet" type="text/css"
+              data-th-href="@{/myStyle.css}" />
+    </div>
+</head>
+<body>
+<div data-th-fragment="header">
+    <!-- this is header -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">Spring Boot</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/}">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
+

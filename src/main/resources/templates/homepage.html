@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--header-->
+    <div data-th-replace="/fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<h1>Hello ^)</h1>
+
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-8">
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>description</th>
+                        <th>content</th>
+                        <th>ops</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-th-each="article: ${articles}">
+                        <td data-th-text="${article.id}"></td>
+                        <td data-th-text="${article.title}"></td>
+                        <td data-th-text="${article.description}"></td>
+                        <td data-th-utext="${article.content}"></td>
+
+                        <td><a href="#" class="btn btn-danger"
+                               data-th-href="@{'/art'+${article.id}+'/delete'}">удалить</a></td>
+                        <!--<td ><a href="#" class="btn btn-primary" data-th-href="@{'/art' +${article.id}+ '/updateArticle'}">редактировать</a></td>-->
+                        <td><a href="#" class="btn btn-primary"
+                               data-th-href="@{'/a' +${article.id} +'/b'+${article.title}}">редактировать</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div-col-sm-8>
+                <div data-th-replace="/fragments/forms :: addArticleForm"/>
+
+            </div-col-sm-8>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--footer-->
+<div data-th-replace="/fragments/footer :: footer"/>
+</body>
+</html>
