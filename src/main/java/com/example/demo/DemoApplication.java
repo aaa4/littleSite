@@ -1,13 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.model.Article;
-import com.example.demo.model.ArticleContent;
-import com.example.demo.model.Author;
-import com.example.demo.model.Category;
-import com.example.demo.repository.ArticleContentRepository;
-import com.example.demo.repository.ArticleRepository;
-import com.example.demo.repository.AuthorRepository;
-import com.example.demo.repository.CategoryRepository;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,15 +11,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication  implements CommandLineRunner {
 
     @Autowired
-    AuthorRepository authorRepository;
-    @Autowired
-    ArticleRepository articleRepository;
-    @Autowired
-    CategoryRepository categoryRepository;
-
-    @Autowired
     ArticleContentRepository articleContentRepository;
 
+    @Autowired
+    ArticleAuthorRepository articleAuthorRepository;
+
+    @Autowired
+    ArticleCategoryRepository articleCategoryRepository;
 
     public static void main(String[] args) {
 
@@ -37,6 +29,20 @@ public class DemoApplication  implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+
+
+       /* ArticleContent c = new ArticleContent();
+        c.setTitle("c1");
+        c.setContent("new c1 content");
+        ArticleAuthor a = new ArticleAuthor();
+        a.setName("first writer");
+        a.addArticleContent(c);
+        ArticleCategory cat = new ArticleCategory();
+        cat.setTag("world");
+        cat.addArticleContent(c);
+        articleAuthorRepository.save(a);
+        articleCategoryRepository.save(cat);*/
 
    /*     ArticleContent a = new ArticleContent();
         a.setTitle("title");

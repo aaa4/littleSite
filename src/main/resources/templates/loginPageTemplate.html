@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link data-th-href="@{/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../static/dashboard.css" rel="stylesheet">
+    <link data-th-href="@{/dashboard.css}" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+
+    <ul class="navbar-nav px-3">
+
+        <li class="nav-item text-nowrap">
+           <p>someText</p>
+        </li>
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#"
+               data-th-href="@{/logout}">Sign out</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+       <!-- Sidebar-->
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+
+                            Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+
+                            Customers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Integrations
+                        </a>
+                    </li>
+                </ul>
+                <!--
+                                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                    <span>Saved reports</span>
+                                    <a class="d-flex align-items-center text-muted" href="#">
+                                        <span data-feather="plus-circle"></span>
+                                    </a>
+                                </h6>
+                                <ul class="nav flex-column mb-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span data-feather="file-text"></span>
+                                            Current month
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span data-feather="file-text"></span>
+                                            Last quarter
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span data-feather="file-text"></span>
+                                            Social engagement
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span data-feather="file-text"></span>
+                                            Year-end sale
+                                        </a>
+                                    </li>
+                                </ul>-->
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+            </div>
+
+
+          <!--     Table-->
+            <h2>Section title</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>password</th>
+                        <th>roles</th>
+                        <th>isEnabled</th>
+                        <th>ops</th>
+                    </tr>
+                    </thead>
+                    <tr data-th-each="user: ${users}">
+                        <td data-th-text="${user.id}"></td>
+                        <td data-th-text="${user.username}"></td>
+                        <td data-th-text="${user.password}"></td>
+                        <td data-th-text="${user.roles}">
+                        </td>
+                        <td data-th-text="${user.enabled}"></td>
+                        <td><a data-th-href="@{'/user/delete/'+${user.id}}" class="myButton">delete</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form">
+                        <form data-th-action="@{/user/add}" method="post">
+                            <div class="form-group">
+                                <label for="usename">Username:</label>
+                                <input data-th-field="${newUser.username}" type="text" class="form-control"
+                                       id="usename">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input data-th-field="${newUser.password}" type="password" class="form-control"
+                                       id="pwd">
+                            </div>
+                           <!-- <div class="form-group">
+                                <label for="role">Password:</label>
+                                <input data-th-field="${newUser.roles}" type="password" class="form-control"
+                                       id="role">
+                            </div>-->
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="credentials">
+                        <h5>Credentials</h5>
+                        <p>You logged as: <span data-th-text="${username}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

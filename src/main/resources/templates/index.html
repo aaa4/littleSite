@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>p1</title>
+    <link rel="stylesheet" data-th-href="@{/htmlElements/myElements.css}">
+</head>
+<body>
+<h1>Hello World!</h1>
+<p>cookies</p>
+<table>
+    <tr data-th-each="cookie : ${cookies}">
+        <td data-th-text="cookie"></td>
+    </tr>
+</table>
+<a data-th-href="@{/users/all}">security page</a>
+
+</body>
+</html>

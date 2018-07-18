@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security Users List</title>
+    <link rel="stylesheet" data-th-href="@{/htmlElements/myElements.css}">
+    <link rel="stylesheet" data-th-href="@{/bootstrap/bootstrap.min.css}">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center
+p-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Accounts</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#">Features</a>
+        <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="#">Pricing</a>
+    </nav>
+    <a data-th-href="@{/logout}" class="btn btn-outline-primary">Sign out</a>
+
+</div>
+<div class="container">
+    <main role="main" class="container">
+        <div class="row">
+
+            <div class="col-md-8">
+                <h1>Greeting </h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>password</th>
+                        <th>isEnabled</th>
+                        <th>ops</th>
+                    </tr>
+                    </thead>
+                    <tr data-th-each="user: ${users}">
+                        <td data-th-text="${user.id}"></td>
+                        <td data-th-text="${user.username}"></td>
+                        <td data-th-text="${user.password}"></td>
+                        <td data-th-text="${user.enabled}"></td>
+
+                        <td><a data-th-href="@{'/user/delete/'+${user.id}}" class="myButton">delete</a></td>
+                    </tr>
+                </table>
+                <br>
+                <form data-th-action="@{/user/add}" method="post">
+                    <p>username: <input data-th-field="${newUser.username}"></p>
+                    <p>password: <input data-th-field="${newUser.password}"></p>
+                    <p><input type="submit" class="myButton"></p>
+                </form>
+            </div>
+            <div class="col-md-4 mySideBar">
+                <a data-th-href="@{/user/credentials}" class="btn btn-outline-primary">Credentials</a>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

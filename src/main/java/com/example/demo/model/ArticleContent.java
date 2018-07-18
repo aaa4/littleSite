@@ -1,9 +1,9 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.ManyToAny;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +15,15 @@ public class ArticleContent {
     String title;
     String description;
     String content;
+    @Column(name = "publication_date")
+    LocalDate date;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ArticleAuthor author;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ArticleCategory category;
+
 
 
     public ArticleContent() {
@@ -24,6 +33,37 @@ public class ArticleContent {
         this.title = title;
         this.description = description;
         this.content = content;
+    }
+
+    public ArticleContent(String title, String description, String content, LocalDate date) {
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.date = date;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public ArticleAuthor getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(ArticleAuthor author) {
+        this.author = author;
+    }
+
+    public ArticleCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ArticleCategory category) {
+        this.category = category;
     }
 
     public int getId() {
@@ -65,6 +105,8 @@ public class ArticleContent {
         ArticleContent that = (ArticleContent) o;
         return id == that.id;
     }
+
+
 
     @Override
     public int hashCode() {

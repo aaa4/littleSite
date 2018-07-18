@@ -16,9 +16,6 @@ public class JavaHoHtmlMain {
         System.out.println(stringBuilder.toString());
 
 
-
-
-
        /* Path textPath = Paths.get("D:/H/test1.txt");
         Charset textCharset = Charset.defaultCharset();  // Or StandardCharsets.UTF_8
         Path htmlPath = Paths.get("D:/H/test1.html");
